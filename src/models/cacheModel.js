@@ -11,12 +11,11 @@ const cacheSchema = new Schema({
  * Middleware to keep track of cache access
  */
 
-
 cacheSchema.post('findOne', async function() {
 	await this.update({accessedAt: Date.now()});
 });
 
-cacheSchema.post('updateOne', async function() {
+cacheSchema.post('findOneAndUpdate', async function() {
 	await this.update({accessedAt: Date.now()});
 });
 
